@@ -1,0 +1,111 @@
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;  /* Uma fonte moderna e limpa */
+    margin: 0;                                                      /* Remove recuos padrão do navegador */
+    padding: 40px 20px;                                             /* Espaço nas bordas da tela */
+    background-color: #f0f2f5;                                    /* Cinza bem claro para destacar os cards brancos */
+    color: #333;                                                  /*Define a cor dos textos*/
+}
+
+/* Reutilizando sua lógica de containers, mas com larguras fixas melhores */
+.container {
+    max-width: 500px;                                   /* Impede que a lista estique demais em telas grandes */
+    background-color: #ffffff;                        /* Fundo branco */
+    padding: 25px;                                      /* Respiro interno */
+    border-radius: 15px;                                /* Cantos arredondados modernos */
+    margin: 0 auto 25px auto;                           /* Centraliza horizontalmente e dá espaço embaixo */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);       /* Sombra suave para dar profundidade */
+    text-align: center;                                 /* Centraliza os textos do container */
+}
+
+/* Melhorando o Input de texto e Botão Adicionar */
+#tarefa {
+    padding: 10px 15px;
+    border: 2px solid #e4e6eb;
+    border-radius: 8px;
+    width: 60%;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#tarefa:focus { border-color: #1e90ff; }
+
+#adicionar {
+    padding: 10px 20px;
+    background-color: #1e90ff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+/* Lista sem as bolinhas padrão */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+li {
+    display: flex;                              /* Transforma o item em uma "caixa flexível" */
+    align-items: center;                        /* Alinha verticalmente (checkbox, texto e botão no meio) */
+    justify-content: space-between;             /* Empurra o texto para a esquerda e o botão para a direita */
+    padding: 12px 0;                            /* Espaço entre uma tarefa e outra */
+    border-bottom: 1px solid #f0f0f0;         /* Linha sutil separando os itens */
+}
+
+li:last-child { border-bottom: none; }
+
+/* Texto da Tarefa */
+.riscado {
+    position: relative;                         /* Necessário para que o "risco" se posicione em relação a ele */
+    cursor: pointer;                            /* Ícone de "mãozinha" ao passar o mouse */
+    font-size: 16px;                            
+    flex-grow: 1;                               /* Faz o label esticar e ocupar todo o meio da linha */
+    margin-right: 15px;
+    text-align: left;                           /* Garante que o texto comece na esquerda */
+}
+
+.riscado::after {
+    content: '';                                /* Obrigatório para o pseudo-elemento aparecer */
+    position: absolute;                         /* Permite colocar a linha exatamente onde quisermos */
+    left: 0;                                    /* Alinha no início do texto */
+    top: 50%;                                   /* Coloca a linha bem no meio da altura da letra */
+    width: 0;                                   /* Começa com tamanho zero (invisível) */
+    height: 2px;                                /* Espessura da linha */
+    background-color: #ff4757;                /* Cor da linha */
+    transition: width 0.3s ease;                /* Anima o crescimento da largura (efeito de "correr") */
+}
+
+/* Quando o mouse passa em cima, a linha vai para 100% da largura */
+.riscado:hover::after { width: 100%; }
+
+/* Estado Marcado */
+/* O "+" seleciona o label que vem logo APÓS o input marcado */
+input[type="checkbox"]:checked + .riscado::after { width: 100%; }
+input[type="checkbox"]:checked + .riscado { color: #a0a0a0; }
+
+/* Esconde o checkbox mas mantém acessível para usar só o label*/
+input[type="checkbox"] {
+    position: absolute;                             /* Tira do fluxo da página */
+    opacity: 0;                                     /* Torna totalmente transparente */
+}  
+
+/* Botão Apagar Minimalista */
+button[type="button"] {
+    background: transparent;                        /* Sem cor de fundo inicial */
+    border: 1px solid #ff4757;                      /* Borda fina colorida */
+    color: #ff4757;                                  /* Texto na mesma cor da borda */
+    padding: 4px 10px;                                  /* Tamanho do botão */
+    border-radius: 5px;                                  /* Arredondamento leve */
+    font-size: 11px;
+    text-transform: uppercase;
+    cursor: pointer;                                    /* Ícone de "mãozinha" ao passar o mouse */
+    transition: all 0.2s;                                /* Suaviza a troca de cor no hover */
+}
+
+button[type="button"]:hover {
+    background: #ff4757;                                /* Inverte as cores no hover */
+    color: white;
+}
