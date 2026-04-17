@@ -26,3 +26,8 @@ The system includes duplicate prevention, data normalization, task movement betw
 - Backend integration
 - Improved UI/UX
 - Task filtering
+
+## Live Demo
+
+Access the online project here:  
+https://task-manager-mu-flame.vercel.app
