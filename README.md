@@ -30,4 +30,4 @@ The system includes duplicate prevention, data normalization, task movement betw
 ## Live Demo
 
 Access the online project here:  
-https://task-manager-mu-flame.vercel.app
+https://task-manager-orpin-sigma.vercel.app
